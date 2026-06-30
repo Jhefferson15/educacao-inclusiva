@@ -1,0 +1,9 @@
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temp / IDE files
+.gemini/
+*.tmp
+*.log
