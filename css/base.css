@@ -1,0 +1,75 @@
+:root {
+  --sky-1: #100F2E;
+  --sky-2: #241F5E;
+  --paper: #F7F1E1;
+  --ink: #241F33;
+  --marigold: #F4B63E;
+  --vermilion: #E2533B;
+  --teal: #27A39B;
+  --lilac: #9B8BD6;
+  --star: #FDE9A7;
+  --pink: #E87FA6;
+  --green: #7FBF6A;
+  --deficiencia: #27A39B;
+  --classe: #F4B63E;
+  --genero: #E2533B;
+  --raca: #9B8BD6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--paper);
+  overflow: hidden;
+  background: radial-gradient(130% 110% at 50% -10%, var(--sky-2) 0%, var(--sky-1) 65%);
+  transition: background 1.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.warm {
+  --sky-2: #3a2a52;
+}
+
+body.cold {
+  --sky-2: #1c2748;
+}
+
+.layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+#stars {
+  z-index: 0;
+}
+
+#stars i {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--star);
+  animation: tw 3.6s ease-in-out infinite;
+}
+
+#blobs i {
+  position: absolute;
+  border-radius: 46% 54% 60% 40%;
+  filter: blur(8px);
+  opacity: .16;
+  animation: drift 18s ease-in-out infinite;
+}
+
+.vignette {
+  z-index: 2;
+  background: radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(6, 5, 22, .55));
+}

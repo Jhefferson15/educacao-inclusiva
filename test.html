@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Estrelas na Terra - Testes Unitários</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #121124;
+      --card-bg: #1a1932;
+      --text: #f7f1e1;
+      --primary: #f4b63e;
+      --success: #7fbf6a;
+      --error: #e2533b;
+      --border: rgba(247, 241, 225, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 800px;
+    }
+    header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Fredoka', sans-serif;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      opacity: 0.7;
+      font-size: 0.95rem;
+    }
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-card .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Fredoka', sans-serif;
+      margin-bottom: 0.2rem;
+    }
+    .stat-card .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      opacity: 0.6;
+      letter-spacing: 0.05em;
+    }
+    .suite-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .suite-header {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .test-list {
+      list-style: none;
+    }
+    .test-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .test-item:last-child {
+      border-bottom: none;
+    }
+    .status-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .status-icon.success { color: var(--success); }
+    .status-icon.error { color: var(--error); }
+    .test-details {
+      flex-grow: 1;
+    }
+    .test-desc {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .test-err {
+      font-family: monospace;
+      font-size: 0.85rem;
+      background: rgba(226, 83, 59, 0.1);
+      color: #ff8876;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      margin-top: 0.4rem;
+      white-space: pre-wrap;
+      border: 1px solid rgba(226, 83, 59, 0.2);
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+    button {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      padding: 0.8rem 1.8rem;
+      border-radius: 99px;
+      border: none;
+      cursor: pointer;
+      color: #121124;
+      background: var(--primary);
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+    button:active {
+      transform: translateY(1px);
+    }
+    button.secondary {
+      background: rgba(247, 241, 225, 0.1);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* Hidden mock containers for visual effects tests */
+    #mock-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mock containers to let app.js parse and bind events without throwing -->
+  <div id="mock-container">
+    <div id="stage"></div>
+    <div id="dots"></div>
+    <div id="counter"></div>
+    <button id="prev"></button>
+    <button id="next"></button>
+    <button id="notes"></button>
+    <button id="movie"></button>
+    <button id="music"></button>
+    <button id="voice"></button>
+    <select id="voicePick"></select>
+    <div id="stars"></div>
+    <div id="blobs"></div>
+    <div id="shoot"></div>
+    <div id="wipe"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Suíte de Testes Unitários</h1>
+      <div class="subtitle">Como Estrelas na Terra · Validação de Interfaces e Funções</div>
+    </header>
+
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="value" id="stat-total">0</div>
+        <div class="label">Total</div>
+      </div>
+      <div class="stat-card" style="color: var(--success)">
+        <div class="value" id="stat-passed">0</div>
+        <div class="label">Passados</div>
+      </div>
+      <div class="stat-card" style="color: var(--error)">
+        <div class="value" id="stat-failed">0</div>
+        <div class="label">Falhas</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" id="stat-time">0ms</div>
+        <div class="label">Tempo</div>
+      </div>
+    </div>
+
+    <div id="results"></div>
+
+    <div class="actions">
+      <button onclick="runAllTests()">Executar Testes Novamente</button>
+      <button class="secondary" onclick="window.location.href='index.html'">Voltar para a Apresentação</button>
+    </div>
+  </div>
+
+  <!-- Load all source scripts to be tested -->
+  <script src="js/state.js"></script>
+  <script src="js/data/scenes.js"></script>
+  <script src="js/data/dialogues.js"></script>
+  <script src="js/components/characters.js"></script>
+  <script src="js/components/scenery.js"></script>
+  <script src="js/systems/audio.js"></script>
+  <script src="js/systems/effects.js"></script>
+  <script src="js/systems/voice.js"></script>
+  <script src="js/systems/choreography.js"></script>
+  <script src="js/interactions/classroom.js"></script>
+  <script src="js/interactions/complaint.js"></script>
+  <script src="js/interactions/compare.js"></script>
+  <script src="js/interactions/father_anger.js"></script>
+  <script src="js/interactions/farewell.js"></script>
+  <script src="js/interactions/strict_school.js"></script>
+  <script src="js/interactions/rajan.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Lightweight Assert & Test Runner Framework -->
+  <script>
+    const suites = {};
+    let currentSuite = "";
+
+    function suite(name, fn) {
+      currentSuite = name;
+      suites[name] = [];
+      fn();
+    }
+
+    function test(description, fn) {
+      suites[currentSuite].push({ description, fn });
+    }
+
+    function assert(condition, message) {
+      if (!condition) {
+        throw new Error(message || "Assertion failed: expected true, got false");
+      }
+    }
+
+    assert.equal = function(actual, expected, message) {
+      if (actual !== expected) {
+        throw new Error((message ? message + " | " : "") + `Expected "${expected}" (type ${typeof expected}), but got "${actual}" (type ${typeof actual})`);
+      }
+    };
+
+    assert.includes = function(string, substring, message) {
+      if (!string || typeof string !== 'string' || !string.includes(substring)) {
+        throw new Error((message ? message + " | " : "") + `Expected string to include "${substring}"`);
+      }
+    };
+
+    /* ===== DEFINE TESTS ===== */
+
+    suite("1. Characters SVG Renderer (characters.js)", () => {
+      test("person() deve retornar uma string SVG válida com viewBox e atributos corretos", () => {
+        const svg = person();
+        assert(typeof svg === 'string', "O retorno deve ser uma string");
+        assert.includes(svg, "<svg", "Deve conter a tag de abertura <svg");
+        assert.includes(svg, "</svg>", "Deve conter a tag de fechamento </svg>");
+        assert.includes(svg, 'viewBox="0 0 120 200"', "Deve conter a viewBox correta");
+        assert.includes(svg, 'class="ch "', "Deve ter a classe padrão ch");
+      });
+
+      test("ishaan() deve gerar o personagem principal com escala correta", () => {
+        const standard = ishaan("happy");
+        const scaled = ishaan("happy", 1.5);
+        assert.includes(standard, 'width="72"', "A largura padrão deve ser 72");
+        assert.includes(scaled, 'width="108"', "A largura escalada a 1.5 deve ser 108 (72 * 1.5)");
+      });
+
+      test("famous() deve intercalar avatares e miniaturas de artes em SVG", () => {
+        const portrait = `<svg id="picasso-face"></svg>`;
+        const art = `<svg id="cubism-art"></svg>`;
+        const result = famous(portrait, "Picasso", art, "Cubismo");
+        assert.includes(result, "Picasso", "Deve renderizar o nome do artista");
+        assert.includes(result, "Cubismo", "Deve renderizar o nome da obra");
+        assert.includes(result, portrait, "Deve conter a face em SVG do artista");
+        assert.includes(result, art, "Deve conter a obra em SVG");
+      });
+    });
+
+    suite("2. Slides & Dialogues Database (scenes.js)", () => {
+      test("scenes deve conter exatamente 25 slides cênicos", () => {
+        assert.equal(scenes.length, 25, "A história completa tem 25 slides");
+      });
+
+      test("A história deve começar com uma intro e terminar com uma conclusão", () => {
+        assert.equal(scenes[0].type, "intro", "O primeiro slide deve ser de tipo intro");
+        assert.equal(scenes[scenes.length - 1].type, "close", "O último slide deve ser de tipo close");
+      });
+
+      test("Os slides intermediários devem ser numerados sequencialmente de 1 a 23", () => {
+        for (let i = 1; i <= 23; i++) {
+          assert.equal(scenes[i].num, i, `A cena ${i} deve conter o número sequencial ${i}`);
+          assert(scenes[i].title, `A cena ${i} deve conter um título`);
+          assert(scenes[i].narration, `A cena ${i} deve conter uma narração`);
+        }
+      });
+
+      test("LINES deve conter falas e coreografias para cada chave de arte correspondente", () => {
+        const expectedKeys = ["wonder", "classroom", "compare", "gate", "teacher", "tutoring", "cards", "easel"];
+        expectedKeys.forEach(key => {
+          assert(LINES[key], `LINES deve possuir diálogos para a cena "${key}"`);
+          assert(Array.isArray(LINES[key]), `A entrada LINES.${key} deve ser uma Array`);
+          assert(LINES[key].length > 0, `LINES.${key} deve conter pelo menos uma fala`);
+        });
+      });
+    });
+
+    suite("3. Music Synthesizer (audio.js)", () => {
+      test("midiF deve converter notas MIDI em frequências Hertz com precisão", () => {
+        // Nota MIDI 69 é o Lá de referência (440Hz)
+        assert.equal(midiF(69), 440, "MIDI 69 deve ser exatamente 440Hz");
+        // Nota MIDI 60 é o Dó Central (261.63Hz)
+        const centralC = midiF(60);
+        assert(Math.abs(centralC - 261.63) < 0.01, "MIDI 60 deve ser aproximadamente 261.63Hz");
+      });
+    });
+
+    suite("4. Speech Synthesis & Bubbles (voice.js)", () => {
+      test("scoreVoice deve classificar vozes em Português com maior pontuação", () => {
+        const ptVoiceBr = { name: "Google pt-BR Female", lang: "pt-BR" };
+        const ptVoicePt = { name: "Microsoft Helia - Portuguese (Portugal)", lang: "pt-PT" };
+        const enVoice = { name: "Microsoft David - English (United States)", lang: "en-US" };
+
+        assert(scoreVoice(ptVoiceBr) > scoreVoice(ptVoicePt), "pt-BR deve ter maior pontuação que pt-PT");
+        assert(scoreVoice(ptVoicePt) > scoreVoice(enVoice), "Vozes em Português devem ter maior pontuação que Inglês");
+      });
+
+      test("buildQueue deve carregar diálogos customizados ou usar a narração padrão", () => {
+        // Slide 0 (Intro) usa a narração padrão
+        const queueIntro = buildQueue(0);
+        assert.equal(queueIntro.length, 1, "A introdução deve ter 1 bloco de narração");
+        assert.equal(queueIntro[0][0], "narrator", "O locutor deve ser narrator");
+
+        // Slide 1 (Cena 1 - wonder) possui diálogos no LINES
+        const queueScene1 = buildQueue(1);
+        assert.equal(queueScene1.length, 2, "A cena 1 possui 2 linhas de falas");
+        assert.equal(queueScene1[0][0], "narrator", "A primeira fala é do narrador");
+        assert.equal(queueScene1[1][0], "ishaan", "A segunda fala é do Ishaan");
+      });
+    });
+
+    suite("5. Visual Effects & Particles (effects.js)", () => {
+      test("makeRain deve instanciar partículas de chuva no container", () => {
+        const parent = document.createElement("div");
+        parent.id = "rainScene";
+        document.body.appendChild(parent);
+
+        makeRain();
+
+        assert(parent.children.length === 34, "Deve instanciar exatamente 34 spans de chuva");
+        parent.remove();
+      });
+
+      test("confetti deve espalhar confetes no body da página", () => {
+        const initialCount = document.querySelectorAll(".confetti").length;
+        
+        confetti(20);
+        
+        const currentCount = document.querySelectorAll(".confetti").length;
+        assert.equal(currentCount, initialCount + 20, "Deve criar 20 elementos de confete");
+
+        // Limpeza
+        document.querySelectorAll(".confetti").forEach(el => el.remove());
+      });
+
+      test("doWipe deve ativar a transição e aplicar a cor passada", () => {
+        const wipeEl = document.getElementById("wipe");
+        wipeEl.classList.remove("go");
+
+        doWipe("#ff0000");
+
+        assert.equal(wipeEl.style.getPropertyValue("--swipe"), "#ff0000", "Deve aplicar a variável de cor --swipe");
+        assert(wipeEl.classList.contains("go"), "Deve conter a classe CSS go para animar");
+      });
+    });
+
+    suite("6. Navigation & State Cycle (app.js)", () => {
+      test("nav() deve alternar o índice do slide mantendo limites", () => {
+        idx = 0;
+        nav(1);
+        assert.equal(idx, 1, "nav(1) deve ir para o slide 1");
+        nav(-1);
+        assert.equal(idx, 0, "nav(-1) deve retornar para o slide 0");
+      });
+
+      test("stopMovie() deve interromper a reprodução automática", () => {
+        playing = true;
+        stopMovie();
+        assert.equal(playing, false, "playing deve ser setado para false");
+      });
+    });
+
+    /* ===== RUNNER CORE ===== */
+
+    function runAllTests() {
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+
+      let total = 0;
+      let passed = 0;
+      let failed = 0;
+      const startTime = performance.now();
+
+      for (const suiteName in suites) {
+        const suiteCard = document.createElement("div");
+        suiteCard.className = "suite-card";
+
+        const header = document.createElement("div");
+        header.className = "suite-header";
+        header.innerHTML = `<span>${suiteName}</span>`;
+        suiteCard.appendChild(header);
+
+        const list = document.createElement("ul");
+        list.className = "test-list";
+
+        let suitePassed = 0;
+        let suiteFailed = 0;
+
+        suites[suiteName].forEach(testCase => {
+          total++;
+          const item = document.createElement("li");
+          item.className = "test-item";
+
+          try {
+            testCase.fn();
+            passed++;
+            suitePassed++;
+            item.innerHTML = `
+              <span class="status-icon success">✔</span>
+              <div class="test-details">
+                <div class="test-desc">${testCase.description}</div>
+              </div>
+            `;
+          } catch (err) {
+            failed++;
+            suiteFailed++;
+            item.innerHTML = `
+              <span class="status-icon error">✘</span>
+              <div class="test-details">
+                <div class="test-desc" style="color: var(--error)">${testCase.description}</div>
+                <div class="test-err">${err.message}</div>
+              </div>
+            `;
+          }
+          list.appendChild(item);
+        });
+
+        header.innerHTML += `<span style="font-size: 0.85rem; opacity: 0.8;">
+          ${suitePassed} passados / ${suiteFailed} falhas
+        </span>`;
+
+        suiteCard.appendChild(list);
+        resultsDiv.appendChild(suiteCard);
+      }
+
+      const duration = Math.round(performance.now() - startTime);
+
+      document.getElementById("stat-total").textContent = total;
+      document.getElementById("stat-passed").textContent = passed;
+      document.getElementById("stat-failed").textContent = failed;
+      document.getElementById("stat-time").textContent = duration + "ms";
+    }
+
+    // Run automatically on load
+    window.addEventListener("DOMContentLoaded", runAllTests);
+  </script>
+</body>
+</html>

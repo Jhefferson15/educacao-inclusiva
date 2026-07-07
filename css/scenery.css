@@ -1,0 +1,1639 @@
+/* ===== SCENERY STRUCTURE & DECORATIONS ===== */
+
+.scene {
+  position: relative;
+  height: clamp(190px, 36vh, 320px);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(4px, 1.6vw, 24px);
+  width: min(100%, 660px);
+}
+
+.ground {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  bottom: 0;
+  height: 26%;
+  border-radius: 50% 50% 0 0/100% 100% 0 0;
+  background: rgba(0, 0, 0, .18);
+  filter: blur(2px);
+}
+
+.ch {
+  filter: drop-shadow(0 10px 9px rgba(0, 0, 0, .3));
+  transform-origin: bottom center;
+  display: block;
+}
+
+.imag {
+  position: absolute;
+  animation: floaty 5s ease-in-out infinite;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+}
+
+.sun {
+  position: absolute;
+  width: clamp(30px, 7vw, 46px);
+  height: clamp(30px, 7vw, 46px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fff, var(--marigold));
+  box-shadow: 0 0 22px rgba(244, 182, 62, .7);
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.planet {
+  position: absolute;
+  width: clamp(24px, 6vw, 38px);
+  height: clamp(24px, 6vw, 38px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--lilac));
+  animation: floaty 7s ease-in-out infinite;
+}
+
+.planet::after {
+  content: "";
+  position: absolute;
+  left: -26%;
+  top: 38%;
+  width: 152%;
+  height: 24%;
+  border-radius: 50%;
+  border: 3px solid var(--teal);
+  transform: rotate(-18deg);
+}
+
+/* Classroom Arrangement */
+.scene-classroom #hero {
+  position: absolute;
+  left: 20%;
+  bottom: 6%;
+  z-index: 4;
+}
+
+.scene-classroom .book {
+  position: absolute;
+  right: 16%;
+  bottom: 28%;
+  z-index: 5;
+  width: clamp(80px, 18vw, 120px);
+  height: clamp(60px, 14vw, 90px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+}
+
+.classrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(2px, 1.5vw, 16px);
+  z-index: 1;
+}
+
+.seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.desk {
+  width: clamp(34px, 9vw, 56px);
+  height: 11px;
+  border-radius: 4px;
+  background: #6b4a2e;
+  margin-top: -8px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, .28);
+  position: relative;
+  z-index: 3;
+}
+
+.laugh {
+  animation: laugh .35s ease-in-out infinite;
+}
+
+.haha {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: clamp(1.1rem, 4.4vw, 2rem);
+  opacity: 0;
+  z-index: 4;
+}
+
+.ten {
+  position: absolute;
+  top: -6%;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  color: var(--marigold);
+  font-size: clamp(1.1rem, 4.4vw, 2rem);
+  text-shadow: 0 0 12px rgba(244, 182, 62, .7);
+  opacity: 0;
+  animation: tenUp 2.4s ease-out infinite;
+}
+
+.glow {
+  position: absolute;
+  width: clamp(120px, 30vw, 210px);
+  height: clamp(120px, 30vw, 210px);
+  border-radius: 50%;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(244, 182, 62, .6), transparent 68%);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.recede {
+  animation: recede 3.2s ease-out forwards;
+}
+
+/* Internato Cage Styling */
+.cagebox {
+  position: relative;
+  padding: clamp(8px, 2vw, 14px);
+  border: 5px solid var(--lilac);
+  border-radius: 10px;
+  background: rgba(75, 68, 126, .14);
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, .3);
+}
+
+.cagebox::before, .cagebox::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  background: rgba(75, 68, 126, .55);
+  border-radius: 3px;
+}
+
+.cagebox::before { top: 34%; }
+.cagebox::after { top: 64%; }
+
+.playL {
+  display: inline-block;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 6.4vw, 3rem);
+  animation: playB 1.3s ease-in-out infinite;
+}
+
+.spark {
+  position: absolute;
+  color: var(--star);
+  font-size: clamp(1rem, 3.4vw, 1.5rem);
+  animation: twirl 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px var(--marigold));
+}
+
+/* Famous People Grid Layout */
+.cards {
+  display: flex;
+  gap: clamp(8px, 2.5vw, 24px);
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  z-index: 2;
+}
+
+.fcol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.fcard {
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+  width: clamp(60px, 14vw, 90px);
+  text-align: center;
+  transform: rotate(-3deg);
+  transition: transform .2s;
+}
+
+.fcol:nth-child(even) .fcard {
+  transform: rotate(3deg);
+}
+
+.fcard small {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: clamp(.52rem, 1.8vw, .72rem);
+  color: var(--ink);
+  display: block;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.port {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #FBF8EF;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: .15em;
+  display: flex;
+}
+
+.port svg {
+  width: 100%;
+  height: 100%;
+}
+
+.artmini {
+  background: #fff;
+  border-radius: 9px;
+  padding: 3px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, .22);
+  transform: rotate(2deg);
+  width: clamp(48px, 12vw, 64px);
+}
+
+.artmini:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.artmini svg {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+.artmini small {
+  font-size: .54rem;
+  color: var(--muted);
+  display: block;
+  text-align: center;
+  margin-top: 1px;
+}
+
+/* Scenery Mobile Adjustments */
+@media (max-width: 600px) {
+  .scene {
+    height: clamp(165px, 30vh, 230px);
+    gap: 8px;
+  }
+  
+  .board::after {
+    letter-spacing: 0.15em;
+  }
+  
+  .cagebox {
+    padding: 6px;
+    border-width: 3px;
+  }
+  
+  .playL {
+    font-size: 1.4rem !important;
+  }
+  
+  .closewall {
+    height: clamp(160px, 28vh, 220px);
+  }
+  
+  .scene-classroom #hero {
+    left: 12%;
+    bottom: 4%;
+  }
+  
+  .scene-classroom .book {
+    right: 10%;
+    bottom: 34%;
+    width: 76px;
+    height: 58px;
+  }
+  
+  .scene-classroom .classrow {
+    gap: 4px;
+  }
+}
+
+/* ===== SCENE 3 CINEMATOGRAPHIC UPGRADES ===== */
+
+/* Ishaan sitting vs standing */
+.ishaan-desk-group #hero {
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: bottom center;
+}
+
+.ishaan-desk-group.sitting #hero {
+  transform: translateY(18px) scaleY(0.9);
+}
+
+.ishaan-desk-group.standing #hero {
+  transform: translateY(0) scaleY(1);
+}
+
+/* Small open book on Ishaan's desk */
+.small-book {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 32px;
+  height: 18px;
+  background: var(--paper);
+  border: 1px solid #d8cdb0;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.18);
+  z-index: 5;
+}
+
+.small-book::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #ccc;
+  transform: translateX(-50%);
+}
+
+.small-book .page-l, .small-book .page-r {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  width: 42%;
+  background: transparent;
+  border-bottom: 1px solid #aaa;
+  border-top: 1px solid #aaa;
+}
+
+.small-book .page-l {
+  left: 6%;
+}
+
+.small-book .page-r {
+  right: 6%;
+}
+
+/* Classmates pointing/laughing */
+.seat.laughing .classmate-char svg.ch .arm-r {
+  animation: pointing-laugh 0.4s ease-in-out infinite alternate;
+}
+
+.seat.laughing .classmate-char svg.ch .arm-l {
+  animation: pointing-laugh-l 0.4s ease-in-out infinite alternate;
+}
+
+.seat.laughing .classmate-char {
+  animation: bob-laugh 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes pointing-laugh {
+  0% { transform: rotate(-85deg); }
+  100% { transform: rotate(-95deg) translateY(-2px); }
+}
+
+@keyframes pointing-laugh-l {
+  0% { transform: rotate(85deg); }
+  100% { transform: rotate(95deg) translateY(-2px); }
+}
+
+@keyframes bob-laugh {
+  0% { transform: translateY(0) scaleY(1); }
+  100% { transform: translateY(-7px) scaleY(0.96); }
+}
+
+#student2.laughing, #student3.laughing {
+  transform: scaleX(-1);
+  transition: transform 0.5s ease;
+}
+
+/* Letter Storm */
+.letter-storm {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.storm-letter {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 3.5vw, 2.4rem);
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0;
+  transition: transform 0.2s, opacity 0.5s;
+  z-index: 12;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.storm-letter:hover {
+  transform: scale(1.4) !important;
+  color: var(--vermilion) !important;
+}
+
+.orbit-1 { animation: orbit-path-1 6s linear infinite; }
+.orbit-2 { animation: orbit-path-2 7s linear infinite; }
+.orbit-3 { animation: orbit-path-3 5s linear infinite; }
+.orbit-4 { animation: orbit-path-4 8s linear infinite; }
+
+@keyframes orbit-path-1 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0.8; filter: blur(0px); }
+  25% { transform: translate(60px, -70px) rotate(90deg) scale(1.1); opacity: 1; filter: blur(0.5px); }
+  50% { transform: translate(120px, -30px) rotate(180deg) scale(0.8); opacity: 0.8; filter: blur(1px); }
+  75% { transform: translate(50px, 50px) rotate(270deg) scale(0.6); opacity: 0.5; filter: blur(1.5px); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(0.8); opacity: 0.8; filter: blur(0px); }
+}
+
+@keyframes orbit-path-2 {
+  0% { transform: translate(30px, 15px) rotate(0deg) scale(0.7); opacity: 0.7; }
+  30% { transform: translate(-70px, -50px) rotate(120deg) scale(1.2); opacity: 1; filter: blur(0px); }
+  60% { transform: translate(-40px, 70px) rotate(240deg) scale(0.8); opacity: 0.6; filter: blur(1px); }
+  100% { transform: translate(30px, 15px) rotate(360deg) scale(0.7); opacity: 0.7; }
+}
+
+@keyframes orbit-path-3 {
+  0% { transform: translate(-15px, -30px) rotate(360deg) scale(0.9); opacity: 0.9; }
+  50% { transform: translate(90px, 50px) rotate(180deg) scale(0.6); opacity: 0.5; filter: blur(1px); }
+  100% { transform: translate(-15px, -30px) rotate(0deg) scale(0.9); opacity: 0.9; }
+}
+
+@keyframes orbit-path-4 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.8); opacity: 0.8; }
+  33% { transform: translate(-50px, -90px) rotate(120deg) scale(1.1); opacity: 1; }
+  66% { transform: translate(70px, -50px) rotate(240deg) scale(0.9); opacity: 0.7; filter: blur(0.5px); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(0.8); opacity: 0.8; }
+}
+
+.storm-letter.falling {
+  animation: letter-fall-down 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+}
+
+@keyframes letter-fall-down {
+  to {
+    transform: translateY(220px) rotate(720deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.storm-letter.clicked {
+  transform: scale(2.5) rotate(360deg) !important;
+  color: var(--vermilion) !important;
+  text-shadow: 0 0 15px var(--marigold);
+  opacity: 0 !important;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+/* Dynamic haha animations in Classroom Scene */
+.scene-classroom.shaking .haha:nth-of-type(1) { animation: hahaUp 2.2s ease-out infinite; }
+.scene-classroom.shaking .haha:nth-of-type(2) { animation: hahaUp 2.2s 0.6s ease-out infinite; }
+.scene-classroom.shaking .haha:nth-of-type(3) { animation: hahaUp 2.2s 1.2s ease-out infinite; }
+.scene-classroom.shaking .haha:nth-of-type(4) { animation: hahaUp 2.2s 1.8s ease-out infinite; }
+
+.haha.haha-pop {
+  animation: hahaUpSingle 1.5s ease-out forwards !important;
+}
+
+@keyframes hahaUpSingle {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
+  }
+}
+
+/* ===== SCENE 04 COMPLAINT CINEMATOGRAPHIC UPGRADES ===== */
+
+.scene-complaint {
+  background: transparent;
+}
+
+.complaint-board {
+  position: absolute;
+  background: #3e2e28;
+  border: 8px solid #2a1f1a;
+  border-radius: 4px;
+  width: 48%;
+  height: 45%;
+  top: 10%;
+  left: 26%;
+  opacity: 0.65;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.principal-desk {
+  position: absolute;
+  left: 45%;
+  bottom: 6%;
+  width: 140px;
+  height: 42px;
+  background: #503728;
+  border: 3px solid #362217;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.principal-desk::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 6px;
+  background: rgba(0,0,0,0.2);
+}
+
+.dismissal-letter {
+  position: absolute;
+  top: -6px;
+  left: 35px;
+  width: 45px;
+  height: 32px;
+  background: #fbfbf6;
+  border: 1px solid #d4ccba;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transform: rotate(-10deg);
+  cursor: pointer;
+  padding: 3px;
+  z-index: 4;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dismissal-letter:hover {
+  transform: rotate(-5deg) scale(1.08);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+.letter-stamp {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--vermilion);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.letter-glow .letter-stamp {
+  opacity: 1;
+}
+
+.letter-line {
+  height: 2px;
+  background: #bbb;
+  margin-bottom: 3px;
+  border-radius: 1px;
+}
+
+.letter-glow {
+  border-color: var(--vermilion) !important;
+  box-shadow: 0 0 12px rgba(226, 83, 59, 0.8) !important;
+}
+
+.ishaan-complaint-group {
+  position: absolute;
+  left: 12%;
+  bottom: 6%;
+  z-index: 2;
+  transition: transform 0.8s ease-out, filter 0.8s ease-out;
+}
+
+/* Tears container and drops */
+.tears-container {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tear-drop {
+  position: absolute;
+  width: 3px;
+  height: 6px;
+  background: #89cbf0;
+  border-radius: 30% 30% 50% 50%;
+  opacity: 0;
+  animation: tear-fall-down 1.2s infinite linear;
+}
+
+/* Gloom cloud over Ishaan */
+.gloom-cloud {
+  position: absolute;
+  left: 8%;
+  top: 10%;
+  width: 250px;
+  height: 80px;
+  background: radial-gradient(ellipse at center, rgba(30, 20, 45, 0.45) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.gloom-cloud.gloom-active {
+  opacity: 1;
+}
+
+.gloomy-word {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: rgba(226, 83, 59, 0.55);
+  animation: floaty 4s ease-in-out infinite, fade-in-word 1.5s forwards;
+  opacity: 0;
+}
+
+@keyframes fade-in-word {
+  to { opacity: 0.65; }
+}
+
+/* Interactive Floating Words */
+.complaint-floating-words {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.floaty-word {
+  position: absolute;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  pointer-events: none;
+  z-index: 15;
+  animation: float-up-fade 2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+.red-term {
+  background: var(--vermilion);
+  border: 1.5px solid #fff;
+}
+
+@keyframes float-up-fade {
+  0% { transform: translateY(0) scale(0.7); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-75px) scale(1.1); opacity: 0; }
+}
+
+/* ===== SCENE 06 FATHER ANGER CINEMATOGRAPHIC UPGRADES ===== */
+
+.scene-father-anger {
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Domestic wallpaper pattern */
+.scene-father-anger::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: radial-gradient(circle at 50% 50%, var(--paper) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Shadows creeping on the edges to focus on Ishaan with transparency */
+.scene-father-anger .shadow-gloom {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 65%, transparent 40%, rgba(226, 83, 59, 0.15) 75%, rgba(16, 15, 46, 0.75) 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Pictured frame on the wall */
+.wall-picture {
+  position: absolute;
+  top: 14%;
+  left: 18%;
+  width: 55px;
+  height: 65px;
+  background: #3e261d;
+  border: 4px solid #231610;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+  z-index: 1;
+  cursor: pointer;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+}
+
+.wall-picture::after {
+  content: "👪";
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  filter: grayscale(0.8) sepia(0.3);
+  opacity: 0.7;
+}
+
+.wall-picture:hover {
+  transform: rotate(3deg) scale(1.05);
+}
+
+/* Study Desk */
+.study-desk {
+  position: absolute;
+  right: 15%;
+  bottom: 6%;
+  width: 135px;
+  height: 38px;
+  background: #503120;
+  border: 3px solid #361f12;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* Report Card (Boletim) */
+.report-card {
+  position: absolute;
+  top: -10px;
+  left: 35px;
+  width: 44px;
+  height: 32px;
+  background: #fdfdf9;
+  border: 1.5px solid #dcd5c7;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+  transform: rotate(12deg);
+  cursor: pointer;
+  padding: 3px;
+  z-index: 4;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.4s;
+}
+
+.report-card::before {
+  content: "F";
+  position: absolute;
+  right: 3px;
+  bottom: 2px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--vermilion);
+  opacity: 0.9;
+}
+
+.report-card:hover {
+  transform: rotate(6deg) scale(1.08);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.45);
+}
+
+.report-glow {
+  border-color: var(--vermilion) !important;
+  box-shadow: 0 0 10px rgba(226, 83, 59, 0.75) !important;
+}
+
+/* Character group containers for Scene 6 */
+.father-anger-group {
+  position: absolute;
+  left: 20%;
+  bottom: 6%;
+  z-index: 2;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ishaan-anger-group {
+  position: absolute;
+  right: 28%;
+  bottom: 6%;
+  z-index: 2;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ishaan-anger-group.cower {
+  transform: translateX(18px) scale(0.96);
+}
+
+/* Gloom cloud over Ishaan */
+.gloom-cloud6 {
+  position: absolute;
+  right: 15%;
+  top: 15%;
+  width: 250px;
+  height: 80px;
+  background: radial-gradient(ellipse at center, rgba(35, 10, 15, 0.5) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.gloom-cloud6.gloom-active {
+  opacity: 1;
+}
+
+/* ===== SCENE 05 COMPARE CINEMATOGRAPHIC UPGRADES ===== */
+
+.scene-compare {
+  overflow: hidden;
+}
+
+/* Spotlights */
+.spotlight {
+  position: absolute;
+  top: -10%;
+  width: 140px;
+  height: 120%;
+  pointer-events: none;
+  z-index: 1;
+  transform-origin: top center;
+}
+
+.spotlight-golden {
+  left: 20%;
+  background: linear-gradient(to bottom, rgba(253, 233, 167, 0.4) 0%, rgba(253, 233, 167, 0.05) 60%, transparent 100%);
+  clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%);
+  animation: spotlight-sway-golden 6s ease-in-out infinite alternate;
+}
+
+.spotlight-gloom {
+  right: 20%;
+  background: linear-gradient(to bottom, rgba(155, 139, 214, 0.3) 0%, rgba(155, 139, 214, 0.02) 65%, transparent 100%);
+  clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%);
+  animation: spotlight-flicker-gloom 3s ease-in-out infinite;
+}
+
+@keyframes spotlight-sway-golden {
+  0% { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
+}
+
+@keyframes spotlight-flicker-gloom {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.75; }
+  75% { opacity: 0.85; }
+  25% { opacity: 0.7; }
+}
+
+/* Pedestal Group */
+.pedestal-group {
+  position: absolute;
+  left: 18%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+.pedestal {
+  width: 80px;
+  height: 48px;
+  background: linear-gradient(to bottom, #d4af37, #aa7c11);
+  border: 2px solid #fff;
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255,255,255,0.4);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.pedestal-star {
+  color: #fff;
+  font-size: 16px;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.pedestal-base {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  margin-top: -2px;
+}
+
+.yohan-char-box {
+  margin-bottom: 48px; /* Sits Yohan on top of the pedestal */
+  transition: transform 0.4s ease-out;
+}
+
+/* Conveyor Group (Ishaan & Stamp) */
+.conveyor-group {
+  position: absolute;
+  right: 18%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+.ishaan-compare-box {
+  margin-bottom: 22px; /* Sits Ishaan on the conveyor belt */
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Factory / Conveyor Belt */
+.factory-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.conveyor-belt {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22px;
+  background: #3a3a45;
+  border-top: 3px solid #2a2a35;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.25), inset 0 2px 4px rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.belt-line {
+  position: absolute;
+  top: 5px;
+  height: 2px;
+  width: 200%;
+  background: repeating-linear-gradient(90deg, #1e1e24 0px, #1e1e24 10px, transparent 10px, transparent 20px);
+  animation: belt-scroll 2s linear infinite;
+}
+
+@keyframes belt-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-250px); }
+}
+
+.belt-rollers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.roller {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #555566;
+  border: 1.5px solid #2a2a35;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.2);
+  display: inline-block;
+  animation: roller-spin 2s linear infinite;
+}
+
+@keyframes roller-spin {
+  100% { transform: rotate(-360deg); }
+}
+
+/* Stamping Machine */
+.stamp-machine {
+  position: absolute;
+  top: -130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 120px;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.stamp-piston {
+  width: 8px;
+  height: 70px;
+  background: linear-gradient(to right, #888, #444);
+  border: 1px solid #333;
+  margin: 0 auto;
+  transform-origin: top center;
+  transition: height 0.2s ease-out;
+}
+
+.stamp-head {
+  width: 44px;
+  height: 22px;
+  background: linear-gradient(to bottom, #555, #222);
+  border: 1.5px solid #111;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stamp-label {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 7px;
+  color: #fff;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+/* Stamping machine trigger animation */
+.stamp-machine.stamping .stamp-piston {
+  animation: piston-down 0.9s cubic-bezier(0.6, -0.28, 0.735, 0.04) forwards;
+}
+
+.stamp-machine.stamping .stamp-head {
+  animation: head-down 0.9s cubic-bezier(0.6, -0.28, 0.735, 0.04) forwards;
+}
+
+@keyframes piston-down {
+  0% { height: 70px; }
+  35% { height: 110px; } /* Slam down */
+  45% { height: 104px; } /* Rebound */
+  60% { height: 110px; }
+  100% { height: 70px; } /* Return */
+}
+
+@keyframes head-down {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(0); }
+  45% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+/* Stamped Mark (Label that appears after impact) */
+.stamp-mark {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%) scale(3.5);
+  opacity: 0;
+  background: #fdfdfd;
+  border: 2px dashed var(--vermilion);
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s;
+}
+
+.stamp-mark.stamped-active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1) rotate(-14deg);
+  animation: stamp-impact-flash 0.5s;
+}
+
+@keyframes stamp-impact-flash {
+  0% { transform: translateX(-50%) scale(3.5) rotate(0deg); opacity: 0; }
+  40% { transform: translateX(-50%) scale(0.9) rotate(-18deg); opacity: 1; background: var(--vermilion); }
+  100% { transform: translateX(-50%) scale(1) rotate(-14deg); background: #fdfdfd; }
+}
+
+.stamp-text {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--vermilion);
+  text-align: center;
+  line-height: 1.1;
+}
+
+.stamp-sub {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  font-size: 7px;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+/* Star particles and tear particles */
+.gold-star-particle {
+  position: absolute;
+  color: var(--marigold);
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  animation: float-star-up 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes float-star-up {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-80px) scale(1.2); opacity: 0; }
+}
+
+/* Floating interactive items layer */
+.compare-floating-items {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 12;
+}
+
+/* ===== SCENE 07: FAREWELL CINEMATIC LAYOUT ===== */
+
+/* Character transition timings for smooth movements */
+.ishaan-farewell-style {
+  will-change: left;
+}
+
+.mother-farewell-style,
+.father-farewell-style {
+  will-change: left, transform, opacity;
+}
+
+/* Redesign gate bars to stand out against background */
+.farewell-gate i {
+  width: 9px;
+  background: linear-gradient(#5a507a, #2b2330);
+  border-radius: 6px 6px 0 0;
+  height: clamp(140px, 30vh, 250px);
+  box-shadow: inset -2px 0 5px rgba(0, 0, 0, .45), 3px 0 10px rgba(0,0,0,0.3);
+  border: 1px solid #3d345c;
+}
+
+/* Taxi container custom adjustments */
+.taxi-car {
+  bottom: 8%;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  transition: transform 3.0s cubic-bezier(0.45, 0, 0.55, 1), opacity 2.0s ease-in-out;
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================
+   SCENE 10: O AMIGO RAJAN - SCENERY ELEMENT STYLES
+   ========================================================================== */
+
+/* Cenário Geral */
+.scene-rajan {
+  background: linear-gradient(180deg, #b2dfdb 0%, #e0f2f1 70%, #fff8e1 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Árvore no Fundo */
+.sc10-tree {
+  position: absolute;
+  left: 68%;
+  bottom: 12%;
+  width: 140px;
+  height: 240px;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.tree-trunk {
+  position: absolute;
+  left: 55px;
+  bottom: 0;
+  width: 22px;
+  height: 100px;
+  background: #5d4037;
+  border: 3px solid #3e2723;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.tree-foliage-1, .tree-foliage-2, .tree-foliage-3 {
+  position: absolute;
+  border-radius: 50%;
+  background: #00796b;
+  border: 3px solid #004d40;
+}
+
+.tree-foliage-1 {
+  width: 90px;
+  height: 90px;
+  left: 20px;
+  top: 60px;
+}
+
+.tree-foliage-2 {
+  width: 80px;
+  height: 80px;
+  left: -10px;
+  top: 100px;
+  background: #00897b;
+}
+
+.tree-foliage-3 {
+  width: 85px;
+  height: 85px;
+  left: 55px;
+  top: 90px;
+  background: #26a69a;
+}
+
+/* Banco de Madeira */
+.sc10-bench {
+  position: absolute;
+  left: 45%;
+  bottom: 12%;
+  width: 190px;
+  height: 52px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.bench-back {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 170px;
+  height: 8px;
+  background: #a1887f;
+  border: 2px solid #5d4037;
+  border-radius: 3px;
+}
+
+.bench-seat {
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 190px;
+  height: 10px;
+  background: #8d6e63;
+  border: 2.5px solid #4e342e;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.bench-leg-l, .bench-leg-r {
+  position: absolute;
+  bottom: 0;
+  width: 7px;
+  height: 25px;
+  background: #37474f;
+  border: 2px solid #212121;
+  border-radius: 2px;
+}
+
+.bench-leg-l { left: 24px; }
+.bench-leg-r { right: 24px; }
+
+/* Passarinho no Banco */
+.sc10-bird {
+  position: absolute;
+  font-size: 1.1rem;
+  left: 14px;
+  top: -4px;
+  z-index: 4;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.sc10-bird.hop {
+  animation: bird-hop-anim 0.45s ease-in-out forwards;
+}
+@keyframes bird-hop-anim {
+  0% { transform: translateY(0) scaleY(1); }
+  40% { transform: translateY(-16px) scaleY(1.1) rotate(-8deg); }
+  75% { transform: translateY(-4px) scaleY(0.9) rotate(5deg); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+
+/* Borboleta X, Y iniciais */
+.sc10-butterfly {
+  left: 15%;
+  top: 25%;
+}
+
+/* Folhas caindo container */
+.leaves-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SCENE 9: STRICT SCHOOL (O NOVO PESADELO) - SCENERY STYLES
+   ========================================================================== */
+
+.scene-strict-classroom {
+  background: linear-gradient(to bottom, #1d212d 0%, #29303e 100%) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Window & rain */
+.strict-window {
+  position: absolute;
+  left: 8%;
+  top: 8%;
+  width: 90px;
+  height: 125px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 4px solid #2b303d;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.strict-window .window-pane {
+  position: absolute;
+  inset: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rain-drip {
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background: linear-gradient(rgba(200, 220, 255, 0), rgba(200, 220, 255, 0.7));
+  border-radius: 2px;
+  animation: drip-slide 3s linear infinite;
+}
+
+.drip1 { left: 20%; animation-delay: 0.2s; animation-duration: 2.4s; }
+.drip2 { left: 52%; animation-delay: 1.2s; animation-duration: 3s; }
+.drip3 { left: 82%; animation-delay: 0.6s; animation-duration: 2.7s; }
+
+@keyframes drip-slide {
+  0% { top: -15%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 115%; opacity: 0; }
+}
+
+/* Light Beam from window */
+.strict-light-beam {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200, 225, 255, 0.12) 0%, rgba(200, 225, 255, 0) 75%);
+  clip-path: polygon(8% 8%, 24% 8%, 90% 100%, 0% 100%);
+  pointer-events: none;
+  z-index: 1;
+  animation: beam-flicker 5s ease-in-out infinite alternate;
+}
+
+@keyframes beam-flicker {
+  0% { opacity: 0.85; }
+  50% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
+/* Strict chalkboard */
+.strict-board {
+  position: absolute;
+  left: 44%;
+  top: 10%;
+  width: clamp(160px, 35vw, 240px);
+  height: clamp(80px, 15vw, 105px);
+  background: #111a12 !important;
+  border: 5px solid #3c3226;
+  border-radius: 3px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+}
+
+.board-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.board-math {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 600;
+}
+
+.board-scary-letter {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: rgba(255, 255, 255, 0.35);
+  animation: chalk-float 4.5s ease-in-out infinite alternate;
+}
+
+.letter-a { left: 8%; bottom: 8%; transform: rotate(-20deg); animation-delay: 0.3s; }
+.letter-b { right: 10%; top: 12%; transform: rotate(35deg); animation-delay: 1.1s; }
+.letter-c { right: 28%; bottom: 6%; transform: rotate(175deg); animation-delay: 0.7s; }
+
+@keyframes chalk-float {
+  0% { transform: translateY(0) rotate(-5deg); }
+  100% { transform: translateY(-4px) rotate(15deg); }
+}
+
+/* Grayscale Classmates */
+.strict-classmates {
+  position: absolute;
+  left: 8%;
+  bottom: 5%;
+  width: 44%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.strict-seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.strict-classmate-char {
+  filter: grayscale(0.92) opacity(0.78);
+  transform: scaleX(1);
+  transition: filter 0.6s ease, transform 0.6s ease;
+  will-change: filter, transform;
+}
+
+/* Ishaan Desk Group in strict school */
+.strict-ishaan-desk-group {
+  position: absolute;
+  left: 20%;
+  bottom: 6%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: bottom center;
+}
+
+.strict-ishaan-desk-group.standing {
+  transform: translateY(-24px) scale(1.02);
+}
+
+.strict-ishaan-desk-group #hero {
+  transform-origin: bottom center;
+  transition: transform 0.5s ease;
+}
+
+/* Teacher container positioning */
+.teacher-strict-classroom-style {
+  position: absolute;
+  right: 15%;
+  bottom: 6%;
+  z-index: 4;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  transform-origin: bottom center;
+}
+
+/* Floating nightmare letters & text containers */
+.nightmare-letter-storm {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.strict-words-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Floating words styling */
+.floaty-word.strict-word-red {
+  position: absolute;
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: #c62828;
+  text-shadow: 0 2px 8px rgba(198, 40, 40, 0.4);
+  animation: strictWordFloat 2.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.floaty-word.strict-word-black {
+  position: absolute;
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: #111111;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  animation: strictWordFloat 2.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 25;
+  pointer-events: none;
+}
+
+@keyframes strictWordFloat {
+  0% { opacity: 0; transform: translateY(20px) scale(0.7); }
+  15% { opacity: 1; transform: translateY(0) scale(1.1); }
+  35% { transform: translateY(-5px) scale(1); }
+  100% { opacity: 0; transform: translateY(-55px) scale(0.85); }
+}
+
+/* Discrete Replay Button */
+.strict-replay-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  opacity: 0.5;
+  transition: opacity 0.2s, background-color 0.2s, transform 0.2s;
+  pointer-events: auto;
+}
+
+.strict-replay-btn span {
+  font-size: 1.15rem;
+}
+
+.strict-replay-btn:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.55);
+  transform: scale(1.1);
+}
+
+.strict-replay-btn:active {
+  transform: scale(0.94);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+  .strict-board {
+    left: 45%;
+    width: 140px;
+    height: 70px;
+  }
+  
+  .strict-window {
+    left: 5%;
+    width: 70px;
+    height: 100px;
+  }
+  
+  .strict-ishaan-desk-group {
+    left: 14%;
+    bottom: 4%;
+  }
+  
+  .teacher-strict-classroom-style {
+    right: 10%;
+    bottom: 4%;
+  }
+}
+
+
+

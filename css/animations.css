@@ -1,0 +1,1770 @@
+/* ===== KEYFRAMES & UTILITY ANIMATIONS ===== */
+
+@keyframes tw {
+  0%, 100% {
+    opacity: .2;
+    transform: scale(.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.shoot {
+  position: absolute;
+  top: 14%;
+  left: -12%;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--star));
+  border-radius: 2px;
+  filter: drop-shadow(0 0 6px var(--star));
+  opacity: 0;
+}
+
+.shoot.go {
+  animation: shoot 1.5s ease-in forwards;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(18deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(120vw, 46vh) rotate(18deg);
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  50% {
+    transform: translate(30px, -26px) rotate(40deg);
+  }
+}
+
+/* Paint wipe transition */
+.wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-115%);
+  background: linear-gradient(90deg, transparent, var(--swipe, #F4B63E) 45%, var(--swipe, #F4B63E) 55%, transparent);
+}
+
+.wipe.go {
+  animation: wipe .62s ease-in-out;
+}
+
+@keyframes wipe {
+  0% {
+    transform: translateX(-115%);
+    opacity: 0;
+  }
+  35% {
+    opacity: .55;
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(115%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Character Idle States */
+.breathe {
+  animation: breathe 3.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.wobble {
+  animation: wobble 2.8s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Character Action Triggers */
+.enter {
+  animation: enter .8s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+.enter.d1 {
+  animation-delay: .15s;
+}
+.enter.d2 {
+  animation-delay: .3s;
+}
+.enter.d3 {
+  animation-delay: .45s;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.act-reach {
+  animation: reach 2.4s ease-in-out infinite;
+}
+
+@keyframes reach {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+}
+
+.act-walkR {
+  animation: walkR 1.1s cubic-bezier(.2, .8, .2, 1) backwards, breathe 3.4s 1.1s ease-in-out infinite;
+}
+
+@keyframes walkR {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.act-walkL {
+  animation: walkL 1.1s cubic-bezier(.2, .8, .2, 1) backwards, breathe 3.4s 1.1s ease-in-out infinite;
+}
+
+@keyframes walkL {
+  from {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.act-cheer {
+  animation: cheer .9s ease-in-out infinite;
+}
+
+@keyframes cheer {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  45% {
+    transform: translateY(-16px) rotate(4deg);
+  }
+}
+
+.act-sway {
+  animation: sway 3.6s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.act-hop {
+  animation: hop 1.1s ease-in-out infinite;
+}
+
+@keyframes hop {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-18px);
+  }
+  55% {
+    transform: translateY(0);
+  }
+}
+
+.shakeit {
+  animation: shakeit .5s ease-in-out 2;
+}
+
+@keyframes shakeit {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-6deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
+}
+
+/* Dance & Letters Effects */
+@keyframes dance {
+  0%, 100% {
+    transform: translateY(0) rotate(-10deg);
+  }
+  50% {
+    transform: translateY(-26%) rotate(12deg);
+  }
+}
+
+@keyframes spill {
+  0% {
+    opacity: 0;
+    transform: translate(0, -10px) rotate(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), 60px) rotate(var(--dr));
+  }
+}
+
+.dreamstar {
+  filter: drop-shadow(0 0 14px var(--star));
+  animation: twirl 4s ease-in-out infinite;
+}
+
+@keyframes twirl {
+  0%, 100% {
+    transform: rotate(-10deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.15);
+  }
+}
+
+.floaty {
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes rain {
+  to {
+    transform: translateY(120%);
+  }
+}
+
+.burst.go {
+  animation: burst 1s ease-out forwards;
+}
+
+@keyframes burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.1);
+  }
+  40% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(3.4);
+  }
+}
+
+.splat {
+  animation: pop .6s backwards;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes deal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotate(-12deg) scale(.8);
+  }
+}
+
+@keyframes paintIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counter {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Fall of barriers keyframes */
+@keyframes fallL {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-70px) rotate(-72deg);
+  }
+}
+
+@keyframes fallR {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(70px) rotate(72deg);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(108vh) rotate(720deg);
+    opacity: .9;
+  }
+}
+
+/* ===== CINEMATIC & CHARACTER GESTURE ANIMATIONS ===== */
+
+/* Talking animation for SVG mouth */
+.talking svg.ch .mouth {
+  animation: talk-mouth 0.16s ease-in-out infinite alternate;
+  transform-origin: 60px 80px;
+}
+@keyframes talk-mouth {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1.3) scaleX(1.05); }
+}
+
+/* Gesture: Aceno (Wave right arm) */
+.gesture-wave svg.ch .arm-r {
+  animation: gesture-wave-arm 0.6s ease-in-out infinite alternate;
+}
+@keyframes gesture-wave-arm {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-105deg); }
+}
+
+/* Gesture: Gesticulação (Explain with both arms) */
+.gesture-explain svg.ch .arm-l {
+  animation: gesture-explain-arm-l 1s ease-in-out infinite alternate;
+}
+.gesture-explain svg.ch .arm-r {
+  animation: gesture-explain-arm-r 1s ease-in-out infinite alternate;
+}
+@keyframes gesture-explain-arm-l {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(35deg); }
+}
+@keyframes gesture-explain-arm-r {
+  0% { transform: rotate(5deg); }
+  100% { transform: rotate(-35deg); }
+}
+
+/* Gesture: Elevação de braços (Excited / Raising hands) */
+.gesture-raise svg.ch .arm-l {
+  transform: rotate(135deg);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.gesture-raise svg.ch .arm-r {
+  transform: rotate(-135deg);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Gesture: Apontar (Point right arm forward) */
+.gesture-point svg.ch .arm-r {
+  transform: rotate(-85deg);
+  transition: transform 0.3s ease-out;
+}
+
+/* Gesture: Assustado (Tremble arms and head) */
+.gesture-scared svg.ch .arm-l {
+  animation: gesture-tremble-l 0.1s infinite alternate;
+}
+.gesture-scared svg.ch .arm-r {
+  animation: gesture-tremble-r 0.1s 0.05s infinite alternate;
+}
+@keyframes gesture-tremble-l {
+  0% { transform: rotate(-10deg) translate(-1px, 1px); }
+  100% { transform: rotate(5deg) translate(1px, -1px); }
+}
+@keyframes gesture-tremble-r {
+  0% { transform: rotate(10deg) translate(1px, -1px); }
+  100% { transform: rotate(-5deg) translate(-1px, 1px); }
+}
+
+/* Gesture: Abraço (Hug arms wrapped forward) */
+.gesture-hug svg.ch .arm-l {
+  transform: rotate(65deg) scaleX(1.1);
+  transition: transform 0.5s ease;
+}
+.gesture-hug svg.ch .arm-r {
+  transform: rotate(-65deg) scaleX(1.1);
+  transition: transform 0.5s ease;
+}
+
+/* Camera: Zoom In (Focus) */
+.scene.cam-zoom {
+  animation: camera-zoom 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes camera-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.14) translateY(-12px); }
+}
+
+/* Camera: Pan Left */
+.scene.cam-pan-l {
+  animation: camera-pan-l 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes camera-pan-l {
+  0% { transform: scale(1.08) translateX(25px); }
+  100% { transform: scale(1.08) translateX(-25px); }
+}
+
+/* Camera: Pan Right */
+.scene.cam-pan-r {
+  animation: camera-pan-r 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes camera-pan-r {
+  0% { transform: scale(1.08) translateX(-25px); }
+  100% { transform: scale(1.08) translateX(25px); }
+}
+
+/* Camera: Shake (Drama / Tension / Laugh) */
+@keyframes camera-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-3px, 2px) rotate(-0.5deg); }
+  40% { transform: translate(2px, -1px) rotate(0.5deg); }
+  60% { transform: translate(-2px, -2px) rotate(0deg); }
+  80% { transform: translate(2px, 1px) rotate(0.5deg); }
+}
+
+.scene.cam-zoom-shake {
+  animation: camera-zoom-shake 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.scene.cam-zoom-shake.shaking {
+  animation: camera-zoom-shake 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, camera-shake 0.35s ease-in-out infinite;
+}
+@keyframes camera-zoom-shake {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.18) translateY(-14px); }
+}
+
+/* Poses for Choreography & Narrative Animation */
+#hero.pose-look-up svg.ch .head-group {
+  transform: rotate(-12deg) translateY(2px);
+}
+
+#hero.pose-point-l svg.ch .head-group {
+  transform: rotate(-8deg) translate(-2px, 1px);
+}
+#hero.pose-point-l svg.ch .arm-l {
+  transform: rotate(100deg) scaleX(1.05);
+}
+
+#hero.pose-point-r svg.ch .head-group {
+  transform: rotate(8deg) translate(2px, 1px);
+}
+#hero.pose-point-r svg.ch .arm-r {
+  transform: rotate(-100deg) scaleX(1.05);
+}
+
+#hero.pose-excited svg.ch .head-group {
+  transform: rotate(0deg) translateY(-2px);
+  animation: head-bob-exc 0.4s ease-in-out infinite alternate;
+}
+#hero.pose-excited svg.ch .arm-l {
+  transform: rotate(135deg);
+  animation: wave-arm-l 0.5s ease-in-out infinite alternate;
+}
+#hero.pose-excited svg.ch .arm-r {
+  transform: rotate(-135deg);
+  animation: wave-arm-r 0.5s ease-in-out infinite alternate;
+}
+
+#hero.pose-wonder svg.ch .head-group {
+  transform: rotate(-10deg) translateY(2px);
+}
+#hero.pose-wonder svg.ch .arm-l {
+  transform: rotate(45deg);
+}
+#hero.pose-wonder svg.ch .arm-r {
+  transform: rotate(-45deg);
+}
+
+@keyframes head-bob-exc {
+  0% { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-5px) rotate(3deg); }
+}
+@keyframes wave-arm-l {
+  0% { transform: rotate(120deg); }
+  100% { transform: rotate(145deg); }
+}
+@keyframes wave-arm-r {
+  0% { transform: rotate(-120deg); }
+  100% { transform: rotate(-145deg); }
+}
+
+/* Parallax zoom animations for Scene 1 (Wonder) */
+.scene.cam-zoom .sun {
+  animation: floaty 6s ease-in-out infinite, cam-sun 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.scene.cam-zoom .planet {
+  animation: floaty 7s ease-in-out infinite, cam-planet 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.scene.cam-zoom .dreamstar {
+  animation: twirl 4s ease-in-out infinite, cam-star 7.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes cam-sun {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(8px) scale(0.92); }
+}
+@keyframes cam-planet {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(11px) scale(0.9); }
+}
+@keyframes cam-star {
+  0% { transform: rotate(-10deg) scale(1); }
+  100% { transform: rotate(10deg) scale(1.06) translateY(-5px); }
+}
+
+/* Floating sparkle stars styling */
+.sparkle-star {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px currentColor);
+  z-index: 1;
+}
+
+/* Pupil eye-tracking animations for Choreography */
+#hero.pose-look-up svg.ch .pupil {
+  transform: translateY(-4px) translateX(0.5px);
+}
+#hero.pose-point-l svg.ch .pupil {
+  transform: translateX(-3.5px) translateY(-1.5px);
+}
+#hero.pose-point-r svg.ch .pupil {
+  transform: translateX(3.5px) translateY(-1.5px);
+}
+#hero.pose-excited svg.ch .pupil {
+  transform: translateY(-2px);
+}
+#hero.pose-wonder svg.ch .pupil {
+  transform: translateY(-3.5px);
+}
+
+/* Parallax layer settings */
+.parallax-layer {
+  transition: transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* Constellation Line Draw Effect */
+.scene.cam-zoom .c-line-1 { animation: draw-constellation-line 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards; }
+.scene.cam-zoom .c-line-2 { animation: draw-constellation-line 1.8s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards; }
+.scene.cam-zoom .c-line-3 { animation: draw-constellation-line 1.8s cubic-bezier(0.4, 0, 0.2, 1) 2.4s forwards; }
+.scene.cam-zoom .c-line-4 { animation: draw-constellation-line 1.8s cubic-bezier(0.4, 0, 0.2, 1) 3.3s forwards; }
+
+@keyframes draw-constellation-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Halo highlighting */
+#hero.pose-excited ~ .halo {
+  opacity: 1 !important;
+  animation: pulse-halo 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-halo {
+  0% { transform: translateX(-50%) scale(0.92); opacity: 0.25; }
+  100% { transform: translateX(-50%) scale(1.16); opacity: 0.5; }
+}
+
+
+/* Poses Keyframes and Classes for Scene 02 */
+#hero.pose-walk svg.ch .leg-l {
+  animation: leg-swing-l 0.8s ease-in-out infinite alternate;
+}
+#hero.pose-walk svg.ch .leg-r {
+  animation: leg-swing-r 0.8s ease-in-out infinite alternate;
+}
+#hero.pose-walk svg.ch .arm-l {
+  animation: arm-sway-walk-l 0.8s ease-in-out infinite alternate;
+}
+#hero.pose-walk svg.ch .arm-r {
+  animation: arm-sway-walk-r 0.8s ease-in-out infinite alternate;
+}
+#hero.pose-walk svg.ch .head-group {
+  animation: head-bob-walk 0.8s ease-in-out infinite alternate;
+}
+#hero.pose-walk svg.ch .pupil {
+  transform: translateX(1.5px) translateY(-1px);
+}
+
+#hero.pose-point-down svg.ch .arm-l {
+  transform: rotate(85deg) scaleY(1.05);
+}
+#hero.pose-point-down svg.ch .head-group {
+  transform: rotate(-12deg) translateY(2px);
+}
+#hero.pose-point-down svg.ch .pupil {
+  transform: translateY(2.5px) translateX(-1px);
+}
+
+#hero.pose-kneel svg.ch {
+  animation: crouch-body 1.2s ease-out forwards;
+}
+#hero.pose-kneel svg.ch .leg-l {
+  transform: rotate(50deg) translate(-2px, -8px);
+}
+#hero.pose-kneel svg.ch .leg-r {
+  transform: rotate(35deg) translate(2px, -8px);
+}
+#hero.pose-kneel svg.ch .arm-l {
+  transform: rotate(70deg) translate(2px, -2px);
+}
+#hero.pose-kneel svg.ch .arm-r {
+  transform: rotate(-65deg) translate(-2px, -2px);
+}
+#hero.pose-kneel svg.ch .head-group {
+  transform: rotate(-22deg) translateY(8px);
+}
+#hero.pose-kneel svg.ch .pupil {
+  transform: translateY(3.5px) translateX(-2px);
+}
+
+#hero.pose-point-r svg.ch .arm-r {
+  transform: rotate(-95deg) scaleX(1.1);
+}
+#hero.pose-point-r svg.ch .head-group {
+  transform: rotate(10deg);
+}
+#hero.pose-point-r svg.ch .pupil {
+  transform: translateX(3.5px) translateY(-1px);
+}
+
+@keyframes leg-swing-l {
+  0% { transform: rotate(-18deg); }
+  100% { transform: rotate(18deg); }
+}
+@keyframes leg-swing-r {
+  0% { transform: rotate(18deg); }
+  100% { transform: rotate(-18deg); }
+}
+@keyframes arm-sway-walk-l {
+  0% { transform: rotate(-25deg); }
+  100% { transform: rotate(25deg); }
+}
+@keyframes arm-sway-walk-r {
+  0% { transform: rotate(25deg); }
+  100% { transform: rotate(-25deg); }
+}
+@keyframes head-bob-walk {
+  0% { transform: translateY(0) rotate(-1deg); }
+  100% { transform: translateY(2px) rotate(1deg); }
+}
+@keyframes crouch-body {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(26px) scaleY(0.92); }
+}
+
+/* Dog Scenery Animations */
+.dog-tail {
+  transform-origin: 3px 38px;
+  animation: dog-tail-wag 0.25s linear infinite;
+}
+.dog-head {
+  transform-origin: 26px 26px;
+}
+.dog-mouth {
+  transform-origin: 19px 24px;
+  transition: transform 0.15s;
+}
+.dog-barking .dog-head {
+  animation: dog-head-bark 0.22s ease-in-out infinite alternate;
+}
+.dog-barking .dog-mouth {
+  transform: rotate(-15deg) translate(-1px, 2px);
+}
+@keyframes dog-tail-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(35deg); }
+}
+@keyframes dog-head-bark {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+.dog-bark-text {
+  position: absolute;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--vermilion);
+  background: var(--paper);
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 2px solid var(--vermilion);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: scale(0.6) translateY(10px);
+  pointer-events: none;
+  z-index: 10;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+.dog-bark-text.show {
+  opacity: 1;
+  transform: scale(1) translateY(-15px);
+}
+
+/* Puddle Ripples & Reflection */
+.ripple-ring {
+  transform-origin: 100px 30px;
+  opacity: 0;
+}
+.ripple-active .ripple-ring {
+  animation: ripple-wave 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+.ripple-active .ripple-2 {
+  animation-delay: 0.5s;
+}
+.ripple-active .ripple-3 {
+  animation-delay: 1.0s;
+}
+@keyframes ripple-wave {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.8;
+    stroke-width: 2px;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+}
+
+.puddle-reflection {
+  transform-origin: 100px 24px;
+  opacity: 0.32;
+  transition: transform 0.6s ease-out, opacity 0.6s;
+  filter: blur(0.6px);
+}
+.ripple-active .puddle-reflection {
+  animation: water-distortion 2.5s ease-in-out infinite alternate;
+}
+@keyframes water-distortion {
+  0% { transform: scaleY(-0.7) scaleX(0.85) skewX(-2deg); }
+  100% { transform: scaleY(-0.65) scaleX(0.9) skewX(2deg); }
+}
+
+/* Butterflies animations */
+.butterfly {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 3;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.18));
+}
+.butterfly .wing-l {
+  transform-origin: 13px 13px;
+  animation: wing-flap-l 0.16s linear infinite alternate;
+}
+.butterfly .wing-r {
+  transform-origin: 13px 13px;
+  animation: wing-flap-r 0.16s linear infinite alternate;
+}
+@keyframes wing-flap-l {
+  0% { transform: scaleX(1); }
+  100% { transform: scaleX(0.2); }
+}
+@keyframes wing-flap-r {
+  0% { transform: scaleX(1); }
+  100% { transform: scaleX(0.2); }
+}
+
+.bf-1 {
+  animation: bf-fly-1 12s linear infinite;
+}
+.bf-2 {
+  animation: bf-fly-2 10s linear infinite;
+}
+@keyframes bf-fly-1 {
+  0% { left: -10%; top: 40%; transform: rotate(15deg); }
+  25% { left: 25%; top: 20%; transform: rotate(-10deg); }
+  50% { left: 55%; top: 35%; transform: rotate(20deg); }
+  75% { left: 80%; top: 15%; transform: rotate(-5deg); }
+  100% { left: 110%; top: 45%; transform: rotate(10deg); }
+}
+@keyframes bf-fly-2 {
+  0% { right: -10%; top: 25%; transform: scaleX(-1) rotate(10deg); }
+  30% { right: 30%; top: 45%; transform: scaleX(-1) rotate(-15deg); }
+  60% { right: 60%; top: 15%; transform: scaleX(-1) rotate(20deg); }
+  85% { right: 85%; top: 38%; transform: scaleX(-1) rotate(-5deg); }
+  100% { right: 110%; top: 20%; transform: scaleX(-1) rotate(15deg); }
+}
+
+.paint-splat {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+  animation: splat-burst 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+@keyframes splat-burst {
+  0% { transform: scale(0); opacity: 1; }
+  50% { opacity: 0.9; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ===== SCENE 04 COMPLAINT CINEMATOGRAPHIC ANIMATIONS ===== */
+
+/* Camera: Complaint scene (Pan from adults to Ishaan) */
+.scene.cam-complaint {
+  animation: camera-complaint 11s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes camera-complaint {
+  0% { transform: scale(1.02) translateX(30px); }
+  35% { transform: scale(1.05) translateX(20px) translateY(-5px); }
+  75% { transform: scale(1.18) translateX(-18px) translateY(-10px); }
+  100% { transform: scale(1.22) translateX(-25px) translateY(-12px); }
+}
+
+/* Gesture: Plead (worried pleading gesture with both arms) */
+.gesture-plead svg.ch .arm-l {
+  animation: plead-arm-l 0.8s ease-in-out infinite alternate;
+}
+.gesture-plead svg.ch .arm-r {
+  animation: plead-arm-r 0.8s ease-in-out infinite alternate;
+}
+.gesture-plead svg.ch .head-group {
+  animation: plead-head 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes plead-arm-l {
+  0% { transform: rotate(40deg); }
+  100% { transform: rotate(75deg); }
+}
+@keyframes plead-arm-r {
+  0% { transform: rotate(-40deg); }
+  100% { transform: rotate(-75deg); }
+}
+@keyframes plead-head {
+  0% { transform: rotate(5deg) translateY(0); }
+  100% { transform: rotate(-5deg) translateY(-2px); }
+}
+
+/* Gesture: Sigh (disappointed deep breath / downcast arms and head) */
+.gesture-sigh svg.ch .head-group {
+  animation: sigh-head 2s ease-in-out infinite;
+}
+.gesture-sigh svg.ch .arm-l {
+  transform: rotate(15deg);
+  transition: transform 0.6s ease;
+}
+.gesture-sigh svg.ch .arm-r {
+  transform: rotate(-15deg);
+  transition: transform 0.6s ease;
+}
+
+@keyframes sigh-head {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(6px) rotate(-4deg); }
+}
+
+/* Gesture: Dismiss (flipping arm outwards to discard choice) */
+.gesture-dismiss svg.ch .arm-r {
+  animation: dismiss-arm-r 1s ease-out forwards;
+}
+
+@keyframes dismiss-arm-r {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(-70deg); }
+  100% { transform: rotate(-35deg); }
+}
+
+/* Letter shake animation */
+.letter-shake {
+  animation: letter-shake 0.45s ease-in-out;
+}
+
+@keyframes letter-shake {
+  0%, 100% { transform: rotate(-10deg) scale(1); }
+  20%, 60% { transform: rotate(-4deg) scale(1.06); }
+  40%, 80% { transform: rotate(-16deg) scale(1.06); }
+}
+
+/* --- Principal (Diretor) Custom Animations --- */
+
+/* Action: Stamp (Raise arm, stamp letter, return) */
+.act-stamp svg.ch .arm-r {
+  animation: principal-stamp-arm 1.0s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes principal-stamp-arm {
+  0% { transform: rotate(0deg); }
+  35% { transform: rotate(-125deg) translate(-3px, -8px); } /* Raise high */
+  48% { transform: rotate(-35deg) translate(-2px, 8px); }  /* Slam down! */
+  80% { transform: rotate(-35deg) translate(-2px, 8px); }  /* Hold stamp down */
+  100% { transform: rotate(0deg); }
+}
+
+/* Action: Authoritative pointing/wagging */
+.principal-point-accuse svg.ch .arm-r {
+  animation: principal-accuse-arm 1.6s ease-in-out infinite;
+}
+@keyframes principal-accuse-arm {
+  0%, 100% { transform: rotate(-85deg); }
+  25%, 75% { transform: rotate(-95deg) translateY(-2px); }
+  50% { transform: rotate(-75deg) translateY(2px); }
+}
+
+/* Action: Fold arms (cross arms) */
+.principal-cross-arms svg.ch .arm-l {
+  transform: rotate(65deg) translate(8px, -4px) !important;
+  transition: transform 0.5s ease-out;
+}
+.principal-cross-arms svg.ch .arm-r {
+  transform: rotate(-65deg) translate(-8px, -4px) !important;
+  transition: transform 0.5s ease-out;
+}
+
+/* Action: Dismiss (sweep arm outward) and shake head */
+.principal-dismiss svg.ch .arm-r {
+  animation: principal-dismiss-arm 1.2s ease-out forwards;
+}
+.principal-dismiss svg.ch .head-group {
+  animation: principal-dismiss-head 1.2s ease-in-out forwards;
+}
+@keyframes principal-dismiss-arm {
+  0% { transform: rotate(0deg); }
+  35% { transform: rotate(-70deg); }
+  75% { transform: rotate(20deg) translate(3px, 2px); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes principal-dismiss-head {
+  0%, 100% { transform: rotate(0deg); }
+  30%, 70% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+
+/* --- Father (Pai) Custom Animations --- */
+
+/* Action: Shocked reaction to stamp slam */
+.father-shocked svg.ch {
+  animation: father-shock-body 0.6s ease-out forwards;
+}
+.father-shocked svg.ch .arm-l {
+  animation: father-shock-arm-l 0.6s ease-out forwards;
+}
+.father-shocked svg.ch .arm-r {
+  animation: father-shock-arm-r 0.6s ease-out forwards;
+}
+@keyframes father-shock-body {
+  0% { transform: translateY(0) scale(1); }
+  18% { transform: translateY(-7px) scale(0.97) rotate(-3deg); }
+  45% { transform: translateY(1px) scale(1.02) rotate(1deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+@keyframes father-shock-arm-l {
+  0% { transform: rotate(0deg); }
+  18% { transform: rotate(25deg) translate(2px, -2px); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes father-shock-arm-r {
+  0% { transform: rotate(0deg); }
+  18% { transform: rotate(-25deg) translate(-2px, -2px); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Action: Desperate plead with speaking */
+.father-plead-speak svg.ch .arm-l {
+  animation: plead-arm-l 0.6s ease-in-out infinite alternate;
+}
+.father-plead-speak svg.ch .arm-r {
+  animation: plead-arm-r 0.6s ease-in-out infinite alternate;
+}
+.father-plead-speak svg.ch .head-group {
+  animation: plead-head 1.2s ease-in-out infinite alternate;
+}
+
+/* Action: Head down, cover face in despair */
+.father-despair svg.ch .arm-l {
+  transform: rotate(115deg) translate(6px, -10px) !important;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.father-despair svg.ch .arm-r {
+  transform: rotate(-115deg) translate(-6px, -10px) !important;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.father-despair svg.ch .head-group {
+  transform: rotate(14deg) translateY(6px) !important;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+/* --- Ishaan Custom Animations --- */
+
+/* Action: Look up at parents */
+.ishaan-look-up svg.ch .head-group {
+  transform: rotate(-12deg) translateY(-2px) !important;
+  transition: transform 0.6s ease-out;
+}
+.ishaan-look-up svg.ch .pupil {
+  transform: translateY(-3.5px) translateX(2px) !important;
+}
+
+/* Action: Tremble with fear/crying */
+.ishaan-shiver-cry svg.ch {
+  animation: ishaan-body-shiver 0.15s infinite alternate;
+}
+@keyframes ishaan-body-shiver {
+  0% { transform: translateX(-0.8px) scaleY(0.99); }
+  100% { transform: translateX(0.8px) scaleY(1.01); }
+}
+
+/* Action: Cover ears in distress */
+.ishaan-cover-ears svg.ch .arm-l {
+  transform: rotate(138deg) translate(10px, -15px) !important;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.ishaan-cover-ears svg.ch .arm-r {
+  transform: rotate(-138deg) translate(-10px, -15px) !important;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.ishaan-cover-ears svg.ch .head-group {
+  transform: rotate(-8deg) translateY(5px) !important;
+  animation: ishaan-head-cry 0.25s infinite alternate;
+  transition: transform 0.5s ease-out;
+}
+@keyframes ishaan-head-cry {
+  0% { transform: rotate(-8deg) translateY(5px) translateX(-0.4px); }
+  100% { transform: rotate(-6deg) translateY(6px) translateX(0.4px); }
+}
+
+
+/* --- Camera & Dramatic Effects --- */
+
+/* Brief camera shake on stamp impact */
+.scene.cam-shake-brief {
+  animation: cam-shake-brief-ani 0.35s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes cam-shake-brief-ani {
+  0%, 100% { transform: scale(1.05) translate(0, 0); }
+  15%, 45%, 75% { transform: scale(1.06) translate(-2px, 3px) rotate(-0.5deg); }
+  30%, 60%, 90% { transform: scale(1.06) translate(3px, -2px) rotate(0.5deg); }
+}
+
+/* Extreme focus zoom on Ishaan */
+.scene.cam-focus-ishaan {
+  animation: camera-focus-ishaan-ani 4.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes camera-focus-ishaan-ani {
+  0% { transform: scale(1.18) translateX(-18px) translateY(-10px); }
+  100% { transform: scale(1.42) translateX(46px) translateY(-16px); }
+}
+
+/* Tear fall animation */
+@keyframes tear-fall-down {
+  0% {
+    transform: translateY(0) scaleY(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(60px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* GESTURE AND EFFECTS UPGRADES FOR SCENE 6 FATHER ANGER */
+
+/* Shivering/Trembling for Ishaan's group */
+.ishaan-anger-group.shivering {
+  animation: shiver 0.15s infinite alternate;
+}
+@keyframes shiver {
+  0% { transform: translate(0.5px, 0.5px) rotate(0deg); }
+  50% { transform: translate(-0.5px, -1px) rotate(-0.5deg); }
+  100% { transform: translate(-1px, 0px) rotate(0.5deg); }
+}
+
+/* Shouting body thrust for Father */
+.father-anger-group.shouting {
+  animation: shouting-thrust 0.4s ease-in-out infinite alternate;
+}
+@keyframes shouting-thrust {
+  0% { transform: translateX(45px) translateY(0) scale(1.02); }
+  100% { transform: translateX(48px) translateY(-2px) scale(1.04); }
+}
+
+/* Active pointing gesture for Father */
+.gesture-rage-point svg.ch .arm-r {
+  animation: rage-point 0.4s ease-in-out infinite alternate;
+}
+@keyframes rage-point {
+  0% { transform: rotate(-70deg); }
+  100% { transform: rotate(-95deg); }
+}
+
+.gesture-rage-point svg.ch .arm-l {
+  transform: rotate(20deg);
+}
+
+.gesture-rage-point svg.ch .head-group {
+  animation: rage-head 0.4s ease-in-out infinite alternate;
+}
+@keyframes rage-head {
+  0% { transform: rotate(-4deg) translateY(0); }
+  100% { transform: rotate(4deg) translateY(-2px); }
+}
+
+/* Picture Frame tilting animation */
+.frame-tilt {
+  animation: tilt-frame 0.5s ease-out forwards;
+}
+@keyframes tilt-frame {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(18deg); }
+  100% { transform: rotate(12deg); }
+}
+
+/* ==========================================================================
+   SCENE 07: FAREWELL CINEMATIC POSES & ANIMATIONS
+   ========================================================================== */
+
+/* Gate transition & shake */
+.farewell-gate {
+  position: absolute;
+  left: 45%;
+  bottom: 0;
+  height: 90%;
+  z-index: 5;
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.farewell-gate-open {
+  transform: translateX(-160%);
+}
+.farewell-gate-closed {
+  transform: translateX(0);
+}
+.gate-clank-shake {
+  animation: clank-shake 0.5s ease-in-out;
+}
+@keyframes clank-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 50%, 90% { transform: translateX(-4px); }
+  30%, 70% { transform: translateX(4px); }
+}
+
+/* Taxi movement and headlight */
+.taxi-car {
+  transition: transform 3.0s cubic-bezier(0.45, 0, 0.55, 1), opacity 2.0s ease-in-out;
+}
+.taxi-active .taxi-headlight {
+  fill: #fffbc8 !important;
+  filter: drop-shadow(0 0 15px #fff37a);
+  animation: headlight-glow 1s infinite alternate;
+}
+.taxi-headlight-flash .taxi-headlight {
+  animation: flash-bulb 0.25s 2;
+}
+.taxi-drive-away {
+  transform: translateX(180px);
+  opacity: 0;
+}
+@keyframes headlight-glow {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; filter: drop-shadow(0 0 25px #ffeb3b); }
+}
+@keyframes flash-bulb {
+  0%, 100% { fill: #fff; filter: none; }
+  50% { fill: #ffff66; filter: drop-shadow(0 0 20px #ffff00); }
+}
+
+/* Crying head weep animation */
+@keyframes head-weep {
+  0% { transform: rotate(-10deg) translateY(0); }
+  100% { transform: rotate(-14deg) translateY(4px); }
+}
+
+/* Poses: Ishaan */
+#hero.pose-farewell-plead svg.ch .arm-l {
+  transform: rotate(115deg) scaleX(1.05);
+}
+#hero.pose-farewell-plead svg.ch .arm-r {
+  transform: rotate(-110deg) scaleX(1.05);
+}
+#hero.pose-farewell-plead svg.ch .head-group {
+  transform: rotate(-6deg) translateY(2px);
+  animation: head-weep 0.5s ease-in-out infinite alternate;
+}
+#hero.pose-farewell-hold svg.ch .arm-l {
+  transform: rotate(70deg) translate(2px, -6px);
+}
+#hero.pose-farewell-hold svg.ch .arm-r {
+  transform: rotate(-65deg) translate(-2px, -6px);
+}
+#hero.pose-farewell-hold svg.ch .head-group {
+  transform: rotate(6deg) translateY(1px);
+}
+
+/* Poses: Mother (mateB) */
+#mate.pose-mother-reach svg.ch .arm-l {
+  transform: rotate(110deg) scaleX(1.05);
+}
+#mate.pose-mother-reach svg.ch .head-group {
+  transform: rotate(-10deg) translateY(1px);
+  animation: head-weep 0.6s ease-in-out infinite alternate;
+}
+#mate.pose-mother-weep svg.ch .arm-l {
+  transform: rotate(135deg) translate(6px, -15px);
+}
+#mate.pose-mother-weep svg.ch .arm-r {
+  transform: rotate(-130deg) translate(-6px, -15px);
+}
+#mate.pose-mother-weep svg.ch .head-group {
+  transform: rotate(8deg) translateY(4px);
+}
+
+/* Poses: Father (father) */
+#bro.pose-father-drag svg.ch .arm-r {
+  transform: rotate(-100deg) scaleX(1.05);
+}
+#bro.pose-father-drag svg.ch .head-group {
+  transform: rotate(10deg);
+}
+#bro.pose-father-stern svg.ch .arm-l {
+  transform: rotate(45deg) translate(4px, -2px);
+}
+#bro.pose-father-stern svg.ch .arm-r {
+  transform: rotate(-45deg) translate(-4px, -2px);
+}
+#bro.pose-father-stern svg.ch .head-group {
+  transform: rotate(-3deg);
+}
+
+/* ==========================================================================
+   SCENE 10: O AMIGO RAJAN - CINEMATIC ANIMATIONS & POSES
+   ========================================================================== */
+
+/* Cam zoom cinematográfico */
+.scene.cam-zoom-cinematic {
+  animation: camera-zoom-cinematic-ani 10s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes camera-zoom-cinematic-ani {
+  0% { transform: scale(1.02) translate(0, 0); }
+  100% { transform: scale(1.18) translateY(-8px) translateX(-25px); }
+}
+
+/* Rajan - Ciclo de caminhar com muletas */
+.rajan-style.act-rajan-walk {
+  animation: rajan-body-hop 0.8s ease-in-out infinite;
+}
+.rajan-style.act-rajan-walk svg.ch .crutch-l {
+  animation: rajan-crutches-swing-l 0.8s ease-in-out infinite;
+}
+.rajan-style.act-rajan-walk svg.ch .crutch-r {
+  animation: rajan-crutches-swing-r 0.8s ease-in-out infinite;
+}
+.rajan-style.act-rajan-walk svg.ch .arm-l {
+  animation: rajan-arm-swing-l 0.8s ease-in-out infinite;
+}
+.rajan-style.act-rajan-walk svg.ch .arm-r {
+  animation: rajan-arm-swing-r 0.8s ease-in-out infinite;
+}
+.rajan-style.act-rajan-walk svg.ch .leg-l {
+  animation: rajan-leg-swing-l 0.8s ease-in-out infinite;
+}
+.rajan-style.act-rajan-walk svg.ch .leg-r {
+  animation: rajan-leg-swing-r 0.8s ease-in-out infinite;
+}
+
+@keyframes rajan-body-hop {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  45% { transform: translateY(-7px) scaleY(1.02); }
+  75% { transform: translateY(1px) scaleY(0.98); }
+}
+@keyframes rajan-crutches-swing-l {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(18deg) translateY(-2px); }
+}
+@keyframes rajan-crutches-swing-r {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-18deg) translateY(-2px); }
+}
+@keyframes rajan-arm-swing-l {
+  0%, 100% { transform: rotate(15deg); }
+  50% { transform: rotate(32deg); }
+}
+@keyframes rajan-arm-swing-r {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(-32deg); }
+}
+@keyframes rajan-leg-swing-l {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(12deg); }
+}
+@keyframes rajan-leg-swing-r {
+  0%, 100% { transform: rotate(6deg); }
+  50% { transform: rotate(-12deg); }
+}
+
+/* Rajan - Pose de Aceno */
+.rajan-style.pose-rajan-wave svg.ch .arm-r {
+  animation: rajan-wave-arm-r 0.5s ease-in-out infinite alternate;
+}
+.rajan-style.pose-rajan-wave svg.ch .arm-l {
+  transform: rotate(22deg) translate(1px, -2px) !important;
+}
+.rajan-style.pose-rajan-wave svg.ch .crutch-r {
+  transform: rotate(-12deg) translate(-2px, 3px) !important;
+}
+.rajan-style.pose-rajan-wave svg.ch .head-group {
+  transform: rotate(-4deg) translateY(-1px);
+}
+@keyframes rajan-wave-arm-r {
+  0% { transform: rotate(-110deg) translate(-2px, -8px); }
+  100% { transform: rotate(-145deg) translate(-4px, -11px); }
+}
+
+/* Rajan - Sentado */
+.rajan-style.pose-rajan-sit svg.ch {
+  transform: translateY(22px) !important;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.rajan-style.pose-rajan-sit svg.ch .leg-l {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+.rajan-style.pose-rajan-sit svg.ch .leg-r {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+.rajan-style.pose-rajan-sit svg.ch .arm-l {
+  transform: rotate(20deg) translate(1px, 2px) !important;
+}
+.rajan-style.pose-rajan-sit svg.ch .arm-r {
+  transform: rotate(-20deg) translate(-1px, 2px) !important;
+}
+/* Crutches resting against bench when sitting */
+.rajan-style.pose-rajan-sit svg.ch .crutches {
+  transform: rotate(-72deg) translate(-75px, 36px) !important;
+  transform-origin: 28px 188px;
+  transition: transform 1.1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Ishaan - Sentado Triste */
+.ishaan-rajan-style.pose-ishaan-alone svg.ch {
+  transform: translateY(22px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-alone svg.ch .head-group {
+  transform: rotate(14deg) translateY(7px) !important;
+  transition: transform 0.8s ease-in-out;
+}
+.ishaan-rajan-style.pose-ishaan-alone svg.ch .pupil {
+  transform: translateY(2.5px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-alone svg.ch .arm-l {
+  transform: rotate(18deg) translate(1px, 2px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-alone svg.ch .arm-r {
+  transform: rotate(-18deg) translate(-1px, 2px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-alone svg.ch .leg-l {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-alone svg.ch .leg-r {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+
+/* Ishaan - Sentado Feliz */
+.ishaan-rajan-style.pose-ishaan-sit svg.ch {
+  transform: translateY(22px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-sit svg.ch .head-group {
+  transform: rotate(-5deg) translateY(0) !important;
+  transition: transform 0.8s ease-in-out;
+}
+.ishaan-rajan-style.pose-ishaan-sit svg.ch .pupil {
+  transform: translateX(-2px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-sit svg.ch .arm-l {
+  transform: rotate(18deg) translate(1px, 2px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-sit svg.ch .arm-r {
+  transform: rotate(-18deg) translate(-1px, 2px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-sit svg.ch .leg-l {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-sit svg.ch .leg-r {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+
+/* Ishaan - Olhar surpreso */
+.ishaan-rajan-style.pose-ishaan-look-up-surprise svg.ch {
+  transform: translateY(22px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-look-up-surprise svg.ch .head-group {
+  transform: rotate(-15deg) translateY(-3px) !important;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.ishaan-rajan-style.pose-ishaan-look-up-surprise svg.ch .pupil {
+  transform: translateY(-2.2px) translateX(-3.5px) !important;
+  transition: transform 0.4s ease-out;
+}
+.ishaan-rajan-style.pose-ishaan-look-up-surprise svg.ch .leg-l {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-look-up-surprise svg.ch .leg-r {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+
+/* Ishaan - Cumprimento */
+.ishaan-rajan-style.pose-ishaan-greet svg.ch {
+  transform: translateY(22px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-greet svg.ch .arm-l {
+  animation: ishaan-wave-arm-l 0.5s ease-in-out infinite alternate;
+}
+.ishaan-rajan-style.pose-ishaan-greet svg.ch .arm-r {
+  transform: rotate(-20deg) translate(-1px, 2px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-greet svg.ch .head-group {
+  transform: rotate(-8deg) translateY(-2px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-greet svg.ch .pupil {
+  transform: translateX(-3px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-greet svg.ch .leg-l {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+.ishaan-rajan-style.pose-ishaan-greet svg.ch .leg-r {
+  transform: rotate(85deg) translate(8px, -14px) !important;
+}
+@keyframes ishaan-wave-arm-l {
+  0% { transform: rotate(105deg) translate(1px, -5px); }
+  100% { transform: rotate(135deg) translate(3px, -9px); }
+}
+
+/* Animação das Folhas Caindo */
+.falling-leaf {
+  position: absolute;
+  width: 14px;
+  height: 9px;
+  background: var(--teal);
+  border-radius: 2px 9px;
+  opacity: 0.85;
+  z-index: 1;
+  pointer-events: none;
+  animation: leaf-fall-down 4.2s linear forwards;
+}
+@keyframes leaf-fall-down {
+  0% {
+    transform: translateY(-20px) rotate(0deg) translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(60px) rotate(90deg) translateX(15px);
+  }
+  50% {
+    transform: translateY(145px) rotate(180deg) translateX(-15px);
+  }
+  75% {
+    transform: translateY(220px) rotate(270deg) translateX(10px);
+  }
+  100% {
+    transform: translateY(280px) rotate(360deg) translateX(-5px);
+    opacity: 0;
+  }
+}
+
+/* Animação da Borboleta */
+.sc10-butterfly {
+  position: absolute;
+  font-size: 1.4rem;
+  z-index: 5;
+  cursor: pointer;
+  pointer-events: auto;
+  transform-origin: center center;
+  transition: transform 0.5s ease-out;
+  animation: butterfly-hover 6s ease-in-out infinite alternate;
+}
+@keyframes butterfly-hover {
+  0% { transform: translate(0, 0) scale(1) rotate(0); }
+  25% { transform: translate(30px, -20px) scale(1) rotate(10deg); }
+  50% { transform: translate(75px, 8px) scale(1.08) rotate(-12deg); }
+  75% { transform: translate(115px, -35px) scale(0.92) rotate(15deg); }
+  100% { transform: translate(150px, -8px) scale(1) rotate(4deg); }
+}
+.sc10-butterfly.butterfly-spin {
+  animation: butterfly-spin-loop 0.8s ease-in-out forwards !important;
+}
+@keyframes butterfly-spin-loop {
+  0% { transform: scale(1) rotate(0); }
+  50% { transform: scale(1.4) rotate(180deg) translateY(-25px); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+/* ==========================================================================
+   SCENE 9: STRICT SCHOOL (O NOVO PESADELO) - CINEMATIC ANIMATIONS
+   ========================================================================== */
+
+/* Pacing animation for the teacher */
+.teacher-strict-classroom-style.pacing {
+  animation: strict-teacher-pace 4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+@keyframes strict-teacher-pace {
+  0% { transform: translateX(0) scaleX(1); }
+  45% { transform: translateX(-60px) scaleX(1); }
+  50% { transform: translateX(-60px) scaleX(-1); }
+  95% { transform: translateX(10px) scaleX(-1); }
+  100% { transform: translateX(10px) scaleX(1); }
+}
+
+/* Slamming desk animation for teacher */
+.teacher-strict-classroom-style.slamming {
+  animation: strict-teacher-slam 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  transform-origin: bottom center;
+}
+@keyframes strict-teacher-slam {
+  0% { transform: translateX(0) scale(1); }
+  45% { transform: translateX(-75px) translateY(-8px) scale(1.08); }
+  60% { transform: translateX(-90px) translateY(8px) scale(1.12); }
+  100% { transform: translateX(-80px) translateY(0) scale(1.05); }
+}
+
+/* Right arm motion when slamming */
+.teacher-strict-classroom-style.slamming svg.ch .arm-r {
+  animation: teacher-arm-slam-motion 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  transform-origin: 86.5px 114.5px;
+}
+@keyframes teacher-arm-slam-motion {
+  0% { transform: rotate(0deg); }
+  35% { transform: rotate(-130deg); }
+  55% { transform: rotate(45deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Classmate responses in Scene 9 */
+.strict-classmate-char.staring {
+  transform: scaleX(-1);
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  filter: grayscale(0.7) opacity(0.9);
+}
+.strict-classmate-char.staring.laughing {
+  animation: classmate-bounce-laugh 0.3s ease infinite alternate;
+}
+@keyframes classmate-bounce-laugh {
+  0% { transform: translateY(0) scaleX(-1); }
+  100% { transform: translateY(-4px) scaleX(-1) scaleY(0.95); }
+}
+
+/* Shivering/Trembling for Ishaan's container in Scene 9 */
+.strict-ishaan-desk-group #hero.shivering {
+  animation: strict-shiver 0.08s infinite alternate;
+}
+@keyframes strict-shiver {
+  0% { transform: translate(0.4px, 0.4px) rotate(0deg); }
+  50% { transform: translate(-0.4px, -0.6px) rotate(-0.3deg); }
+  100% { transform: translate(-0.6px, 0.4px) rotate(0.3deg); }
+}
+.strict-ishaan-desk-group #hero.cower {
+  animation: strict-cower 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+@keyframes strict-cower {
+  to { transform: translateY(10px) scale(0.94); opacity: 0.9; }
+}
+
+/* Floating letters under psychological pressure */
+.strict-nightmare-letter {
+  position: absolute;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 15;
+  opacity: 0;
+  user-select: none;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+  animation-fill-mode: forwards;
+}
+.strict-nightmare-letter.orbit-1 { animation: scaryOrbit1 5.5s linear infinite, fadeInLetter 0.5s ease forwards; }
+.strict-nightmare-letter.orbit-2 { animation: scaryOrbit2 6.2s linear infinite, fadeInLetter 0.5s ease forwards; }
+.strict-nightmare-letter.orbit-3 { animation: scaryOrbit3 5.8s linear infinite, fadeInLetter 0.5s ease forwards; }
+.strict-nightmare-letter.orbit-4 { animation: scaryOrbit4 5s linear infinite, fadeInLetter 0.5s ease forwards; }
+.strict-nightmare-letter.orbit-5 { animation: scaryOrbit5 6.8s linear infinite, fadeInLetter 0.5s ease forwards; }
+
+@keyframes fadeInLetter {
+  to { opacity: 0.82; }
+}
+
+@keyframes scaryOrbit1 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(24px, -18px) rotate(120deg) scale(1.1); }
+  66% { transform: translate(-18px, 22px) rotate(240deg) scale(0.9); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+@keyframes scaryOrbit2 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.95); }
+  50% { transform: translate(-28px, -24px) rotate(-180deg) scale(1.15); }
+  100% { transform: translate(0, 0) rotate(-360deg) scale(0.95); }
+}
+@keyframes scaryOrbit3 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(18px, 24px) rotate(90deg); }
+  50% { transform: translate(-24px, 12px) rotate(180deg); }
+  75% { transform: translate(12px, -24px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+@keyframes scaryOrbit4 {
+  0% { transform: translate(0, 0) skew(0deg) scale(1); }
+  50% { transform: translate(24px, -28px) skew(12deg) scale(0.85); }
+  100% { transform: translate(0, 0) skew(0deg) scale(1); }
+}
+@keyframes scaryOrbit5 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-28px, 28px) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+.strict-nightmare-letter.clicked {
+  transform: scale(2.8) rotate(360deg) !important;
+  color: var(--vermilion) !important;
+  text-shadow: 0 0 20px var(--marigold);
+  opacity: 0 !important;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+/* Accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: .001s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+

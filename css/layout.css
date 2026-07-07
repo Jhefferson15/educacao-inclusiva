@@ -1,0 +1,151 @@
+/* ===== LAYOUT & PRESENTATION CONTAINERS ===== */
+
+.stage {
+  position: relative;
+  z-index: 3;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 70px 16px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.slide.active {
+  display: block;
+  animation: slideIn .7s cubic-bezier(.2, .75, .2, 1);
+}
+
+.eyebrow {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-size: clamp(.6rem, 2.3vw, .76rem);
+  color: var(--star);
+  opacity: .9;
+  margin-bottom: .7em;
+  animation: fadeUp .6s .1s backwards;
+}
+
+h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  font-size: clamp(2.1rem, 8.4vw, 4.4rem);
+  letter-spacing: -.015em;
+  background: linear-gradient(100deg, #fff, var(--marigold) 60%, var(--vermilion));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(244, 182, 62, .25));
+}
+
+h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  line-height: 1.08;
+  font-size: clamp(1.55rem, 5.8vw, 2.7rem);
+  color: var(--paper);
+  margin-top: .1em;
+  animation: fadeUp .6s .25s backwards;
+}
+
+.sub {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  color: var(--marigold);
+  font-size: clamp(1.4rem, 5.4vw, 2.3rem);
+  margin-top: .2em;
+  animation: fadeUp .6s .35s backwards;
+}
+
+.desc {
+  font-size: clamp(1rem, 3.3vw, 1.25rem);
+  line-height: 1.5;
+  color: #EAE3D0;
+  max-width: 36ch;
+  margin: .9em auto 0;
+  opacity: .94;
+  animation: fadeUp .6s .4s backwards;
+}
+
+.counter {
+  position: fixed;
+  top: clamp(46px, 12vw, 54px);
+  right: clamp(14px, 4vw, 24px);
+  z-index: 8;
+  font-family: 'Fredoka', sans-serif;
+  font-size: .8rem;
+  color: rgba(247, 241, 225, .55);
+}
+
+.credit {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  width: min(94vw, 820px);
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(.56rem, 2.1vw, .74rem);
+  line-height: 1.28;
+  color: #8a8794;
+  pointer-events: none;
+}
+
+.credit b {
+  color: #5b5867;
+  font-weight: 700;
+}
+
+/* Mobile Typography & Spacing Adapters */
+@media (max-width: 600px) {
+  .stage {
+    padding: 64px 12px 90px;
+  }
+  
+  .dots {
+    top: 40px !important;
+  }
+  
+  .counter {
+    top: 40px !important;
+    right: 12px !important;
+  }
+  
+  h1 {
+    font-size: 1.85rem !important;
+    margin-bottom: 0.1em;
+  }
+  
+  h2 {
+    font-size: 1.35rem !important;
+  }
+  
+  .sub {
+    font-size: 1.15rem !important;
+    margin-top: 0.1em;
+  }
+  
+  .desc {
+    font-size: 0.9rem !important;
+    margin-top: 0.7em !important;
+    line-height: 1.45;
+  }
+  
+  .eyebrow {
+    font-size: 0.6rem !important;
+    margin-bottom: 0.4em !important;
+  }
+}
+
